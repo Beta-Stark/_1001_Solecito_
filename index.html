@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Para mi Princesa</title>
+
+  <!-- Configuración para icono y acceso directo en Android -->
+  <link rel="icon" type="image/png" href="icon-192.png">
+  <link rel="apple-touch-icon" href="icon-192.png">
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#c95f7a">
+
+  <!-- Fuentes bonitas desde Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Handlee&family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Corazones flotando -->
+  <div class="floating-hearts">
+    <span>♡</span>
+    <span>❤</span>
+    <span>♡</span>
+    <span>❤</span>
+    <span>♡</span>
+    <span>❤</span>
+    <span>♡</span>
+    <span>❤</span>
+  </div>
+
+  <!-- Pantalla de contraseña -->
+  <section id="lockScreen" class="lock-screen">
+    <div class="paper-card lock-card">
+      <div class="heart-big">❤</div>
+      <p class="mini-title">Para ti</p>
+      <h1>Para mi Princesa</h1>
+      <p class="lock-text">
+        Este es un espacio para cuando me necesite, me extrañe o quiera recordar cuánto la amo.
+      </p>
+
+      <input type="password" id="passwordInput" placeholder="Ingresa nuestra clave especial" />
+      <button onclick="checkPassword()">Entrar a nuestro rincón</button>
+
+      <p id="errorMessage" class="error"></p>
+    </div>
+  </section>
+
+  <!-- Contenido principal -->
+  <main id="mainContent" class="hidden">
+
+    <!-- Inicio -->
+    <header id="inicio" class="hero">
+      <nav class="top-nav">
+        <div class="logo">♡ Nuestro rincón de amor</div>
+
+        <div class="nav-links">
+          <a href="#cartitas">Cartitas</a>
+          <a href="#razones">Razones</a>
+          <a href="#abrazo">Abrazo</a>
+          <a href="#aniversario">Fecha</a>
+          <a href="#playlist">Playlist</a>
+        </div>
+      </nav>
+
+      <section class="hero-content">
+        <div class="hero-text">
+          <p class="mini-title">Para cuando me extrañe</p>
+          <h1>Hola, amor</h1>
+          <p>
+            Hice este pequeño lugar para usted, mi amor. No tiene que ser perfecto,
+            solo quería que existiera un rincón donde pueda encontrar algo mío
+            cuando no esté cerca.
+          </p>
+
+          <div class="hero-buttons">
+            <a href="#cartitas" class="main-button">Abrir una cartita</a>
+            <a href="#abrazo" class="secondary-button">Necesito un abrazo</a>
+          </div>
+        </div>
+
+        <div class="scrapbook-preview">
+          <div class="tape"></div>
+          <h3>Nota para ti</h3>
+          <p>
+            Si me extraña, ingrese aquí, mi vida.
+            Este lugar guarda palabras hechas para usted.
+          </p>
+          <span>Con todo mi amor ♡</span>
+        </div>
+      </section>
+    </header>
+
+    <!-- Carta principal -->
+    <section id="carta" class="section">
+      <div class="section-title">
+        <p>Primero lea esto</p>
+        <h2>Carta para ti</h2>
+      </div>
+
+      <article class="letter-card paper-card">
+        <p>
+          Mi solecito, usted es mi todo. Jamás olvide lo linda que es,
+          lo importante que es en mi vida y lo feliz que me hace.
+        </p>
+
+        <p>
+          Esta página la hice pensando en usted. Tal vez no siempre pueda estar
+          físicamente cerca, pero quería crear algo que le recuerde que siempre
+          está en mi corazón.
+        </p>
+
+        <p>
+          Cuando tenga un día difícil, cuando me extrañe, cuando quiera sonreír
+          o cuando solo quiera recordar lo mucho que la amo, puede venir aquí.
+        </p>
+
+        <p>
+          Este rincón no es solo una página. Es una pequeña forma de decirle:
+          estoy con usted, la pienso y me importa muchísimo.
+        </p>
+
+        <h3>LA AMO MUCHO, MI TOMATITO ♡</h3>
+      </article>
+    </section>
+
+    <!-- Cartitas interactivas -->
+    <section id="cartitas" class="section">
+      <div class="section-title">
+        <p>Elija una</p>
+        <h2>Cartitas para abrir</h2>
+      </div>
+
+      <div class="open-letters">
+        <button class="letter-button" onclick="openLetter('miss')">
+          💌 Abrir cuando me extrañe
+        </button>
+
+        <button class="letter-button" onclick="openLetter('sad')">
+          💌 Abrir cuando esté triste
+        </button>
+
+        <button class="letter-button" onclick="openLetter('proud')">
+          💌 Abrir cuando necesite un segundo aire
+        </button>
+
+        <button class="letter-button" onclick="openLetter('love')">
+          💌 Abrir cuando quiera recordar cuánto la amo
+        </button>
+      </div>
+
+      <div id="letterModal" class="modal hidden">
+        <div class="modal-content paper-card">
+          <button class="close-modal" onclick="closeLetter()">×</button>
+          <h3 id="letterTitle"></h3>
+          <p id="letterText"></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Frasco de razones -->
+    <section id="razones" class="section">
+      <div class="section-title">
+        <p>Una razón a la vez</p>
+        <h2>Frasco de razones</h2>
+      </div>
+
+      <div class="jar-area">
+        <div class="jar">
+          <div class="jar-lid"></div>
+          <div class="jar-body">
+            <span>♡</span>
+            <span>❤</span>
+            <span>♡</span>
+            <span>❤</span>
+          </div>
+        </div>
+
+        <div class="reason-box paper-card">
+          <p id="reasonText">
+            Presione el botón y sacaré una razón por la que la amo.
+          </p>
+          <button onclick="showReason()">Sacar una razón</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Modo abrazo -->
+    <section id="abrazo" class="section hug-section">
+      <div class="section-title">
+        <p>Para días difíciles</p>
+        <h2>Modo abrazo</h2>
+      </div>
+
+      <div class="hug-card paper-card">
+        <div class="hug-icon">🫂</div>
+        <p id="hugText">
+          Presione el botón cuando necesite sentirme cerca.
+        </p>
+        <button onclick="giveHug()">Necesito un abrazo</button>
+      </div>
+    </section>
+
+    <!-- Momento escrito -->
+    <section id="momentos" class="section">
+      <div class="section-title">
+        <p>Un recuerdo especial</p>
+        <h2>Un momento que guardo de nosotros</h2>
+      </div>
+
+      <div class="text-memories one-memory">
+        <article class="text-memory-card paper-card">
+          <h3>La pulsera</h3>
+          <p>
+            Ese momento siempre significará mucho para mí porque ahí me di cuenta
+            de lo mucho que impactó usted en mi vida, mi amor.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <!-- Aniversario manual -->
+    <section id="aniversario" class="section">
+      <div class="section-title">
+        <p>Cada día 14</p>
+        <h2>Nuestro aniversario</h2>
+      </div>
+
+      <div class="anniversary-card paper-card">
+        <div class="anniversary-heart">❤</div>
+
+        <p class="anniversary-intro">
+          Este espacio es para recordar que cada día 14 es especial para nosotros.
+          La amo y jamas olvide esooooo mi amorr
+        </p>
+
+        <div class="anniversary-grid">
+          <div class="anniversary-box">
+            <span>14</span>
+            <p>nuestro día especial</p>
+          </div>
+
+          <div class="anniversary-box">
+            <span>♡</span>
+            <p>cada mes sumamos más momentos juntos</p>
+          </div>
+        </div>
+
+        <p class="anniversary-message">
+          Cada día 14 me recuerda que usted llegó a mi vida para hacerla más bonita.
+          Gracias por cada momento, cada risa y cada día compartido, mi tomatito.
+        </p>
+      </div>
+    </section>
+
+    <!-- Playlist -->
+    <section id="playlist" class="section">
+      <div class="section-title">
+        <p>Canciones</p>
+        <h2>Playlist de nosotros</h2>
+      </div>
+
+      <div class="playlist-list">
+        <a href="https://www.youtube.com/watch?v=ko70cExuzZM&list=RDko70cExuzZM&start_radio=1" target="_blank">
+          <span>♪</span>
+          The Fate of Ophelia
+        </a>
+
+        <a href="https://www.youtube.com/watch?v=8obld3JrBNM&list=RD8obld3JrBNM&start_radio=1" target="_blank">
+          <span>♪</span>
+          COSAS QUE NO TE DIJE
+        </a>
+      </div>
+    </section>
+
+    <!-- Mensaje secreto -->
+    <section id="secreto" class="section">
+      <div class="section-title">
+        <p>Un detalle más</p>
+        <h2>Mensaje secreto</h2>
+      </div>
+
+      <div class="secret-box paper-card">
+        <p>Escriba la segunda clave para desbloquear un mensaje especial.</p>
+        <input type="password" id="secretInput" placeholder="Segunda clave" />
+        <button onclick="unlockSecret()">Desbloquear</button>
+        <p id="secretMessage" class="secret-message"></p>
+      </div>
+    </section>
+
+    <footer>
+      <p>Hecho con amor, para la persona más especial de mi vida ♡</p>
+    </footer>
+
+    <!-- Barra inferior tipo app -->
+    <nav class="bottom-nav">
+      <a href="#inicio">Inicio</a>
+      <a href="#cartitas">Cartas</a>
+      <a href="#razones">Razones</a>
+      <a href="#aniversario">Fecha</a>
+      <a href="#abrazo">Abrazo</a>
+    </nav>
+
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
